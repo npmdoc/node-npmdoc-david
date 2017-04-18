@@ -154,6 +154,45 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.david.getDependencies">module david.getDependencies</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.david.getDependencies.getDependencies">
+            function <span class="apidocSignatureSpan">david.</span>getDependencies
+            <span class="apidocSignatureSpan">(manifest, opts, cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.david.getUpdatedDependencies">module david.getUpdatedDependencies</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.david.getUpdatedDependencies.getUpdatedDependencies">
+            function <span class="apidocSignatureSpan">david.</span>getUpdatedDependencies
+            <span class="apidocSignatureSpan">(manifest, opts, cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.david.isUpdated">module david.isUpdated</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.david.isUpdated.isUpdated">
+            function <span class="apidocSignatureSpan">david.</span>isUpdated
+            <span class="apidocSignatureSpan">(dep, opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.david.npm">module david.npm</a><ol>
 
         <li>
@@ -581,6 +620,241 @@ Batch.prototype.push = function (key, cb) {
 * @returns {boolean}
 */
 ...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.david.getDependencies" id="apidoc.module.david.getDependencies">module david.getDependencies</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.david.getDependencies.getDependencies" id="apidoc.element.david.getDependencies.getDependencies">
+        function <span class="apidocSignatureSpan">david.</span>getDependencies
+        <span class="apidocSignatureSpan">(manifest, opts, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getDependencies(manifest, opts, cb) {
+  manifest = manifest || {}
+
+  // Allow callback to be passed as second parameter
+  if (!cb) {
+    cb = opts
+    opts = {}
+  } else {
+    opts = opts || {}
+  }
+
+  opts.error = opts.error || {}
+  opts.ignore = opts.ignore || []
+
+  if (manifest.david &amp;&amp; manifest.david.ignore) {
+    opts.ignore = opts.ignore.concat(manifest.david.ignore)
+  }
+
+  var pkgs = {}
+  var deps = normaliseDeps(manifest[depType(opts)] || {})
+  var depNames = Object.keys(deps)
+  var error // Return any error that occurred but don't stop processing
+
+  if (!depNames.length) {
+    return setImmediate(function () { cb(null, pkgs) })
+  }
+
+  var tasks = depNames.map(function (depName) {
+    return function (cb) {
+      if (opts.ignore.indexOf(depName) &gt; -1) {
+        return cb()
+      }
+
+      var err
+
+      if (Object.prototype.toString.call(deps[depName]) !== '[object String]') {
+        err = new Error('Non-string dependency: ' + deps[depName])
+        err.code = 'EDEPTYPE'
+
+        if (!opts.error.EDEPTYPE) {
+          pkgs[depName] = {required: deps[depName], warn: err}
+        } else {
+          error = err
+        }
+
+        return cb()
+      }
+
+      if (Version.isScm(deps[depName])) {
+        err = new Error('SCM dependency: ' + deps[depName])
+        err.code = 'ESCM'
+
+        if (!opts.error.ESCM) {
+          pkgs[depName] = {required: deps[depName], warn: err}
+        } else {
+          error = err
+        }
+        return cb()
+      }
+
+      Npm.getVersionsInfo(depName, opts, function (err, versionsInfo) {
+        if (err) {
+          if (!opts.error.E404 &amp;&amp; err.code === 'E404') {
+            if (err === '404 Not Found') {
+              err = new Error('404 Not Found: ' + depName)
+              err.pkgid = depName
+              err.statusCode = 404
+              err.code = 'E404'
+            }
+
+            pkgs[depName] = {required: deps[depName], warn: err}
+          } else {
+            error = err
+          }
+          return cb()
+        }
+
+        try {
+          var latestVersionInfo = Version.getLatest(versionsInfo.current, versionsInfo.versions, opts)
+
+          pkgs[depName] = {
+            required: deps[depName],
+            stable: latestVersionInfo.stable,
+            latest: latestVersionInfo.latest
+          }
+
+          if (opts.versions) {
+            pkgs[depName].versions = versionsInfo.versions
+          }
+
+          if (opts.rangeVersions) {
+            pkgs[depName].rangeVersions = Version.getVersionsInRange(deps[depName], versionsInfo.versions, opts.loose)
+          }
+        } catch (err) {
+          error = err
+        }
+
+        cb()
+      })
+    }
+  })
+
+  parallel(tasks, function () { cb(error, pkgs) })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+},
+devDependencies: {
+  'yyy': '~0.0.0',
+  'zzz': '~0.0.0'
+}
+};
+
+david.<span class="apidocCodeKeywordSpan">getDependencies</span>(manifest, function (er, deps) {
+console.log('latest dependencies information for', manifest.name);
+listDependencies(deps);
+});
+
+david.getDependencies(manifest, { dev: true }, function (er, deps) {
+console.log('latest devDependencies information for', manifest.name);
+listDependencies(deps);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.david.getUpdatedDependencies" id="apidoc.module.david.getUpdatedDependencies">module david.getUpdatedDependencies</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.david.getUpdatedDependencies.getUpdatedDependencies" id="apidoc.element.david.getUpdatedDependencies.getUpdatedDependencies">
+        function <span class="apidocSignatureSpan">david.</span>getUpdatedDependencies
+        <span class="apidocSignatureSpan">(manifest, opts, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getUpdatedDependencies = function (manifest, opts, cb) {
+  if (!cb) {
+    cb = opts
+    opts = {}
+  } else {
+    opts = opts || {}
+  }
+  opts.error = opts.error || {}
+
+  getDependencies(manifest, opts, function (err, pkgs) {
+    if (err) return cb(err)
+
+    // Filter out the non-updated dependencies
+    Object.keys(pkgs).forEach(function (depName) {
+      if (pkgs[depName].warn) return
+
+      if (!isUpdated(pkgs[depName], opts)) {
+        delete pkgs[depName]
+      }
+    })
+
+    cb(err, pkgs)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+});
+
+david.getDependencies(manifest, { dev: true }, function (er, deps) {
+console.log('latest devDependencies information for', manifest.name);
+listDependencies(deps);
+});
+
+david.<span class="apidocCodeKeywordSpan">getUpdatedDependencies</span>(manifest, function (er, deps) {
+console.log('dependencies with newer versions for', manifest.name);
+listDependencies(deps);
+});
+
+david.getUpdatedDependencies(manifest, { dev: true }, function (er, deps) {
+console.log('devDependencies with newer versions for', manifest.name);
+listDependencies(deps);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.david.isUpdated" id="apidoc.module.david.isUpdated">module david.isUpdated</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.david.isUpdated.isUpdated" id="apidoc.element.david.isUpdated.isUpdated">
+        function <span class="apidocSignatureSpan">david.</span>isUpdated
+        <span class="apidocSignatureSpan">(dep, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isUpdated(dep, opts) {
+  opts = opts || {}
+
+  var required = dep.required || '*'
+
+  // TODO: Handle tags correctly
+  if (required !== 'latest' &amp;&amp; required !== '*') {
+    var range = semver.validRange(required, opts.loose) || ''
+    var version = opts.stable ? dep.stable : dep.latest
+
+    if (version) {
+      if (!range) {
+        return true
+      } else if (!semver.satisfies(version, range, opts.loose)) {
+        if (opts.stable &amp;&amp; semver.gtr(version, range, opts.loose)) {
+          return true
+        } else if (!opts.stable) {
+          return true
+        }
+      }
+    }
+  }
+  return false
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
