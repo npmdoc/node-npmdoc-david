@@ -1,6 +1,6 @@
 # npmdoc-david
 
-#### api documentation for  [david (v11.0.0)](https://github.com/alanshaw/david#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-david.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-david) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-david.svg)](https://travis-ci.org/npmdoc/node-npmdoc-david)
+#### basic api documentation for  [david (v11.0.0)](https://github.com/alanshaw/david#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-david.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-david) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-david.svg)](https://travis-ci.org/npmdoc/node-npmdoc-david)
 
 #### Node.js module that tells you when your project npm dependencies are out of date.
 
