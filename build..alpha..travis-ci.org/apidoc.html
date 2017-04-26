@@ -161,45 +161,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.david.getDependencies">module david.getDependencies</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.david.getDependencies.getDependencies">
-            function <span class="apidocSignatureSpan">david.</span>getDependencies
-            <span class="apidocSignatureSpan">(manifest, opts, cb)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.david.getUpdatedDependencies">module david.getUpdatedDependencies</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.david.getUpdatedDependencies.getUpdatedDependencies">
-            function <span class="apidocSignatureSpan">david.</span>getUpdatedDependencies
-            <span class="apidocSignatureSpan">(manifest, opts, cb)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.david.isUpdated">module david.isUpdated</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.david.isUpdated.isUpdated">
-            function <span class="apidocSignatureSpan">david.</span>isUpdated
-            <span class="apidocSignatureSpan">(dep, opts)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
     <li class="apidocModuleLi"><a href="#apidoc.module.david.npm">module david.npm</a><ol>
 
         <li>
@@ -396,21 +357,22 @@
   parallel(tasks, function () { cb(error, pkgs) })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+  {
+    &#x22;name&#x22;: &#x22;alanshaw&#x22;,
+    &#x22;email&#x22;: &#x22;alan138@gmail.com&#x22;
+  }
+],
+&#x22;name&#x22;: &#x22;david&#x22;,
+&#x22;optionalDependencies&#x22;: {},
+&#x22;readme&#x22;: &#x22;&#x3c;p align=\&#x22;center\&#x22;&#x3e;&#x3c;a href=\&#x22;https://david-dm.org\&#x22;&#x3e;&#x3c;img
+ src=\&#x22;https://raw.github.com/alanshaw/david-www/master/david-logo.png\&#x22; alt=\&#x22;David\&#x22; height=\&#x22;50\&#x22; /&#x3e;&#x3c;/a&#x3e;&#x3c;/p&#x3e;\r\n&#x3c;p align=\&#x22;center\&#x22;&#x3e;\r\n&#x3c;a href=\&#x22;https://www.npmjs.com/package/david\&#x22;&#x3e;&#x3c;img src=\&#x22;https://img.shields.io/npm/v/david.svg\&#x22; alt=\&#x22;npm version\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://travis-ci.org/alanshaw/david\&#x22;&#x3e;&#x3c;img src=\&#x22;https://travis-ci.org/alanshaw/david.svg\&#x22; alt=\&#x22;Build Status\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://coveralls.io/r/alanshaw/david?branch=master\&#x22;&#x3e;&#x3c;img src=\&#x22;http://img.shields.io/coveralls/alanshaw/david.svg?style=flat\&#x22; alt=\&#x22;Coverage Status\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://david-dm.org/alanshaw/david\&#x22;&#x3e;&#x3c;img src=\&#x22;https://david-dm.org/alanshaw/david.svg\&#x22; alt=\&#x22;Dependency Status\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://david-dm.org/alanshaw/david/?type=dev\&#x22;&#x3e;&#x3c;img src=\&#x22;https://david-dm.org/alanshaw/david/dev-status.svg\&#x22; alt=\&#x22;devDependency Status\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;http://inch-ci.org/github/alanshaw/david\&#x22;&#x3e;&#x3c;img src=\&#x22;http://inch-ci.org/github/alanshaw/david.svg?branch=master\&#x22; alt=\&#x22;Inline docs\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://www.gittip.com/_alanshaw/\&#x22;&#x3e;&#x3c;img src=\&#x22;http://img.shields.io/gratipay/_alanshaw.svg?style=flat\&#x22; alt=\&#x22;Donate to help support David development\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;/p&#x3e;\r\n___\r\n\r\nNode.js module that tells you when your package npm dependencies are out of date.\r\n\r\n\r\n## Getting Started\r\n\r\nInstall [Node.js](http://nodejs.org/).\r\n\r\nInstall david:\r\n\r\n```sh\r\ncd /your/project/directory\r\nnpm install david\r\n```\r\n\r\nUse:\r\n\r\n```javascript\r\nvar david = require(&#x27;david&#x27;);\r\n\r\n// Your package.json\r\nvar manifest = {\r\n  name: &#x27;xxx&#x27;,\r\n  dependencies: {\r\n    &#x27;aaa&#x27;: &#x27;~0.0.0&#x27;,\r\n    &#x27;bbb&#x27;: &#x27;~0.0.0&#x27;\r\n  },\r\n  devDependencies: {\r\n    &#x27;yyy&#x27;: &#x27;~0.0.0&#x27;,\r\n    &#x27;zzz&#x27;: &#x27;~0.0.0&#x27;\r\n  }\r\n};\r\n\r\ndavid.<span class="apidocCodeKeywordSpan">getDependencies</span>(manifest, function (er, deps) {\r\n  console.log(&#x27;latest dependencies information for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.getDependencies(manifest, { dev: true }, function (er, deps) {\r\n  console.log(&#x27;latest devDependencies information for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.getUpdatedDependencies(manifest, function (er, deps) {\r\n  console.log(&#x27;dependencies with newer versions for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.getUpdatedDependencies(manifest, { dev: true }, function (er, deps) {\r\n  console.log(&#x27;devDependencies with newer versions for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.getUpdatedDependencies(manifest, { stable: true }, function (er, deps) {\r\n  console.log(&#x27;dependencies with newer STABLE versions for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.getUpdatedDependencies(manifest, { dev: true, stable: true }, function (er, deps) {\r\n  console.log(&#x27;devDependencies with newer STABLE versions for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\nfunction listDependencies(deps) {\r\n  Object.keys(deps).forEach(function(depName) {\r\n    var required = deps[depName].required || &#x27;*&#x27;;\r\n    var stable = deps[depName].stable || &#x27;None&#x27;;\r\n    var latest = deps[depName].latest;\r\n    console.log(&#x27;%s Required: %s Stable: %s Latest: %s&#x27;, depName, required, stable, latest);\r\n  });\r\n}\r\n```\r\n\r\nBoth `getDependencies` and `getUpdatedDependencies` return an object result,\r\nwhose keys are package names. The values are objects which contain the following properties:\r\n\r\n* `required` - The version required according to the manifest\r\n* `stable` - The latest stable version available\r\n* `latest` - The latest version available (including build and patch versions)\r\n\r\n\r\n## CLI\r\n\r\nIf you install David globally with `npm install -g david`, you can run `david`\r\nin your project directory to see which dependencies are out of date.\r\n\r\nYou can also run `david --global` to see your outdated global dependencies.\r\n\r\n### Update to latest\r\n\r\nTo update all your project dependencies to the latest **stable** versions,\r\nand save to your `package.json`, run:\r\n\r\n```sh\r\ndavid update\r\n```\r\n\r\nTo update a particular project dependency to the latest **stable** version,\r\nand save to your `package.json`, run:\r\n\r\n```sh\r\ndavid update package-name\r\n```\r\n\r\nYou can also update global dependencies to latest versions:\r\n\r\n```sh\r\ndavid update --global\r\n```\r\n\r\nTo update all your project dependencies to the latest versions\r\n(including unstable versions), pass the `--unstable` flag:\r\n\r\n```sh\r\ndavid update --unstable\r\n```\r\n\r\n### Alternate registry\r\n\r\n```sh\r\ndavid update --registry http://registry.nodejitsu.com/\r\n```\r\n\r\n### Non-npm and SCM (Git) dependencies\r\n\r\nIf you have dependencies that are not published to npm, david will print a warning message by default. To throw an error and exit, pass the `error404` option:\r\n\r\n```sh\r\ndavid --error404\r\n```\r\n\r\nIf using david programmatically, pass `error: {E404: true}` in the options object.\r\n\r\nIf you have dependencies whose versions are SCM URLs, david will print a warning message by default. To throw an error and exit, pass the `errorSCM` option:\r\n\r\n```sh\r\ndavid --errorSCM\r\n```\r\n\r\nIf using david programmatically, pass `error: {ESCM: true}` in the options object.\r\n\r\n### Specify package.json path\r\n\r\nUse `-p, --package` to specify the path to your package.json.\r\n\r\n### Ignore dependencies\r\n\r\nTo tell david to ignore dependencies, add a `david.ignore` property to your `package.json` which lists the dependencies david should ignore. If using david programmatically you can also pass this as an option. e.g.\r\n\r\n**package.json**\r\n```json\r\n{\r\n  \&#x22;david\&#x22;: {\r\n    \&#x22;ignore\&#x22;: [\&#x22;async\&#x22;, \&#x22;underscore\&#x22;]\r\n  }\r\n}\r\n```\r\n\r\n\r\nRelease History\r\n---------------\r\n\r\n* 2017-01-20   v10.0.0   Update to npm@4\r\n* 2016-08-26   v9.0.0   CLI add global dependencies up to date message\r\n* 2016-06-30   v8.0.0   Update dependencies\r\n* 2015-11-09   v7.0.0   Update to npm@3\r\n* 2015-10-19   v6.4.0   CLI Add `-i, --ignore` option to ignore dependencies\r\n* 2015-10-19   v6.3.0   Ignore dependencies from `package.json` config\r\n* 2015-08-08   v6.2.0   CLI Add `-p, --package` to specify package.json path\r\n* 2014-12-19   v6.0.0   Warn about unregistered or git dependencies by default\r\n* 2014-09-22   v5.0.0   Update to semver@4.0.0\r\n* 2014-09-22   v4.1.0   Add versions option to return all dependency versions\r\n* 2014-09-21   v4.0.0   Update to npm@2.0.2, add rangeVersions option\r\n* 2014-06-02   v3.3.0   CLI Add `--warn404` option to print errors but not abort\r\n* 2014-03-11   v3.1.0   CLI Add `-r, --registry` option to use alternate npm registry\r\n* 2014-03-06   v3.0.0   Errors occurring whilst retrieving dependency status doesn&#x27;t halt processing of other dependencies. An error object will be returned as first arg to callback, but status info for remaining dependencies will still be available (as second arg). CLI now uses loose semver version parsing. Also update npm dependency so `david update` uses \&#x22;^\&#x22; as per https://github.com/npm/npm/issues/4587\r\n* 2013-10-27   v2.4.0   Removes `semverext.js`. The `gtr` function is now available in `semver`\r\n* 2013-10-08   v2.3.0   Support update specific modules from CLI via `david update [module]`\r\n* 2013-10-01   v2.2.0   Support for `optionalDependencies` and `peerDependencies`\r\n* 2013-09-16   v2.1.0   Fixed issues with latest/stable version detection\r\n* 2013-08-25   v2.0.0   Simplification refactor to remove caching and useless events. Code style changes, performance improvements.\r\n* 2013-08-04   v1.9.0   CLI added `--unstable` flag to view/update to latest _unstable_ dependency versions\r\n* 2013-07-30   v1.8.0   CLI added `david update` to update dependencies to latest _stable_ versions and save to your project `package.json`\r\n* 2013-06-27   v1.7.0   Updated to use semver 2 module. Simplified code that determines if a version is greater than a range\r\n* 2013-03-28   v1.6.0   Use `setImmediate` instead of `process.nextTick`. David now requires Node.js 0.10.x\r\n* 2013-03-27   v1.5.0   CLI added `--global` flag to find outdated global dependencies\r\n* 2013-03-15   v1.4.0   Allow set the maximum number of dependencies that can be stored in the cache\r\n* 2013-03-14   v1.3.0   Added CLI support\r\n* 2013-03-05   v1.2.0   David can now get dependency information for `devDependencies`\r\n* 2013-02-07   v1.1.0   Adds `onlyStable` param to `getUpdatedDependencies` to filter by dependencies that are updated and stable\r\n* 2013-02-06   v1.0.0   Return latest stable version as well as latest version (including patch and build versions). API return values changed. Events changed.\r\n\r\n---\r\n\r\n[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)\r\n&#x22;,
+&#x22;readmeFilename&#x22;: &#x22;README.md&#x22;,
+&#x22;repository&#x22;: {
+  &#x22;type&#x22;: &#x22;git&#x22;,
+  &#x22;url&#x22;: &#x22;git://github.com/alanshaw/david.git&#x22;
 },
-devDependencies: {
-  &#x27;yyy&#x27;: &#x27;~0.0.0&#x27;,
-  &#x27;zzz&#x27;: &#x27;~0.0.0&#x27;
-}
-};
-
-david.<span class="apidocCodeKeywordSpan">getDependencies</span>(manifest, function (er, deps) {
-console.log(&#x27;latest dependencies information for&#x27;, manifest.name);
-listDependencies(deps);
-});
-
-david.getDependencies(manifest, { dev: true }, function (er, deps) {
-console.log(&#x27;latest devDependencies information for&#x27;, manifest.name);
-listDependencies(deps);
+&#x22;scripts&#x22;: {
+  &#x22;coveralls&#x22;: &#x22;cat ./coverage/lcov.info | coveralls&#x22;,
 ...</pre></li>
     </ul>
 
@@ -448,21 +410,22 @@ listDependencies(deps);
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-});
-
-david.getDependencies(manifest, { dev: true }, function (er, deps) {
-console.log(&#x27;latest devDependencies information for&#x27;, manifest.name);
-listDependencies(deps);
-});
-
-david.<span class="apidocCodeKeywordSpan">getUpdatedDependencies</span>(manifest, function (er, deps) {
-console.log(&#x27;dependencies with newer versions for&#x27;, manifest.name);
-listDependencies(deps);
-});
-
-david.getUpdatedDependencies(manifest, { dev: true }, function (er, deps) {
-console.log(&#x27;devDependencies with newer versions for&#x27;, manifest.name);
-listDependencies(deps);
+  {
+    &#x22;name&#x22;: &#x22;alanshaw&#x22;,
+    &#x22;email&#x22;: &#x22;alan138@gmail.com&#x22;
+  }
+],
+&#x22;name&#x22;: &#x22;david&#x22;,
+&#x22;optionalDependencies&#x22;: {},
+&#x22;readme&#x22;: &#x22;&#x3c;p align=\&#x22;center\&#x22;&#x3e;&#x3c;a href=\&#x22;https://david-dm.org\&#x22;&#x3e;&#x3c;img
+ src=\&#x22;https://raw.github.com/alanshaw/david-www/master/david-logo.png\&#x22; alt=\&#x22;David\&#x22; height=\&#x22;50\&#x22; /&#x3e;&#x3c;/a&#x3e;&#x3c;/p&#x3e;\r\n&#x3c;p align=\&#x22;center\&#x22;&#x3e;\r\n&#x3c;a href=\&#x22;https://www.npmjs.com/package/david\&#x22;&#x3e;&#x3c;img src=\&#x22;https://img.shields.io/npm/v/david.svg\&#x22; alt=\&#x22;npm version\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://travis-ci.org/alanshaw/david\&#x22;&#x3e;&#x3c;img src=\&#x22;https://travis-ci.org/alanshaw/david.svg\&#x22; alt=\&#x22;Build Status\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://coveralls.io/r/alanshaw/david?branch=master\&#x22;&#x3e;&#x3c;img src=\&#x22;http://img.shields.io/coveralls/alanshaw/david.svg?style=flat\&#x22; alt=\&#x22;Coverage Status\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://david-dm.org/alanshaw/david\&#x22;&#x3e;&#x3c;img src=\&#x22;https://david-dm.org/alanshaw/david.svg\&#x22; alt=\&#x22;Dependency Status\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://david-dm.org/alanshaw/david/?type=dev\&#x22;&#x3e;&#x3c;img src=\&#x22;https://david-dm.org/alanshaw/david/dev-status.svg\&#x22; alt=\&#x22;devDependency Status\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;http://inch-ci.org/github/alanshaw/david\&#x22;&#x3e;&#x3c;img src=\&#x22;http://inch-ci.org/github/alanshaw/david.svg?branch=master\&#x22; alt=\&#x22;Inline docs\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;a href=\&#x22;https://www.gittip.com/_alanshaw/\&#x22;&#x3e;&#x3c;img src=\&#x22;http://img.shields.io/gratipay/_alanshaw.svg?style=flat\&#x22; alt=\&#x22;Donate to help support David development\&#x22;&#x3e;&#x3c;/a&#x3e;\r\n&#x3c;/p&#x3e;\r\n___\r\n\r\nNode.js module that tells you when your package npm dependencies are out of date.\r\n\r\n\r\n## Getting Started\r\n\r\nInstall [Node.js](http://nodejs.org/).\r\n\r\nInstall david:\r\n\r\n```sh\r\ncd /your/project/directory\r\nnpm install david\r\n```\r\n\r\nUse:\r\n\r\n```javascript\r\nvar david = require(&#x27;david&#x27;);\r\n\r\n// Your package.json\r\nvar manifest = {\r\n  name: &#x27;xxx&#x27;,\r\n  dependencies: {\r\n    &#x27;aaa&#x27;: &#x27;~0.0.0&#x27;,\r\n    &#x27;bbb&#x27;: &#x27;~0.0.0&#x27;\r\n  },\r\n  devDependencies: {\r\n    &#x27;yyy&#x27;: &#x27;~0.0.0&#x27;,\r\n    &#x27;zzz&#x27;: &#x27;~0.0.0&#x27;\r\n  }\r\n};\r\n\r\ndavid.getDependencies(manifest, function (er, deps) {\r\n  console.log(&#x27;latest dependencies information for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.getDependencies(manifest, { dev: true }, function (er, deps) {\r\n  console.log(&#x27;latest devDependencies information for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.<span class="apidocCodeKeywordSpan">getUpdatedDependencies</span>(manifest, function (er, deps) {\r\n  console.log(&#x27;dependencies with newer versions for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.getUpdatedDependencies(manifest, { dev: true }, function (er, deps) {\r\n  console.log(&#x27;devDependencies with newer versions for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.getUpdatedDependencies(manifest, { stable: true }, function (er, deps) {\r\n  console.log(&#x27;dependencies with newer STABLE versions for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\ndavid.getUpdatedDependencies(manifest, { dev: true, stable: true }, function (er, deps) {\r\n  console.log(&#x27;devDependencies with newer STABLE versions for&#x27;, manifest.name);\r\n  listDependencies(deps);\r\n});\r\n\r\nfunction listDependencies(deps) {\r\n  Object.keys(deps).forEach(function(depName) {\r\n    var required = deps[depName].required || &#x27;*&#x27;;\r\n    var stable = deps[depName].stable || &#x27;None&#x27;;\r\n    var latest = deps[depName].latest;\r\n    console.log(&#x27;%s Required: %s Stable: %s Latest: %s&#x27;, depName, required, stable, latest);\r\n  });\r\n}\r\n```\r\n\r\nBoth `getDependencies` and `getUpdatedDependencies` return an object result,\r\nwhose keys are package names. The values are objects which contain the following properties:\r\n\r\n* `required` - The version required according to the manifest\r\n* `stable` - The latest stable version available\r\n* `latest` - The latest version available (including build and patch versions)\r\n\r\n\r\n## CLI\r\n\r\nIf you install David globally with `npm install -g david`, you can run `david`\r\nin your project directory to see which dependencies are out of date.\r\n\r\nYou can also run `david --global` to see your outdated global dependencies.\r\n\r\n### Update to latest\r\n\r\nTo update all your project dependencies to the latest **stable** versions,\r\nand save to your `package.json`, run:\r\n\r\n```sh\r\ndavid update\r\n```\r\n\r\nTo update a particular project dependency to the latest **stable** version,\r\nand save to your `package.json`, run:\r\n\r\n```sh\r\ndavid update package-name\r\n```\r\n\r\nYou can also update global dependencies to latest versions:\r\n\r\n```sh\r\ndavid update --global\r\n```\r\n\r\nTo update all your project dependencies to the latest versions\r\n(including unstable versions), pass the `--unstable` flag:\r\n\r\n```sh\r\ndavid update --unstable\r\n```\r\n\r\n### Alternate registry\r\n\r\n```sh\r\ndavid update --registry http://registry.nodejitsu.com/\r\n```\r\n\r\n### Non-npm and SCM (Git) dependencies\r\n\r\nIf you have dependencies that are not published to npm, david will print a warning message by default. To throw an error and exit, pass the `error404` option:\r\n\r\n```sh\r\ndavid --error404\r\n```\r\n\r\nIf using david programmatically, pass `error: {E404: true}` in the options object.\r\n\r\nIf you have dependencies whose versions are SCM URLs, david will print a warning message by default. To throw an error and exit, pass the `errorSCM` option:\r\n\r\n```sh\r\ndavid --errorSCM\r\n```\r\n\r\nIf using david programmatically, pass `error: {ESCM: true}` in the options object.\r\n\r\n### Specify package.json path\r\n\r\nUse `-p, --package` to specify the path to your package.json.\r\n\r\n### Ignore dependencies\r\n\r\nTo tell david to ignore dependencies, add a `david.ignore` property to your `package.json` which lists the dependencies david should ignore. If using david programmatically you can also pass this as an option. e.g.\r\n\r\n**package.json**\r\n```json\r\n{\r\n  \&#x22;david\&#x22;: {\r\n    \&#x22;ignore\&#x22;: [\&#x22;async\&#x22;, \&#x22;underscore\&#x22;]\r\n  }\r\n}\r\n```\r\n\r\n\r\nRelease History\r\n---------------\r\n\r\n* 2017-01-20   v10.0.0   Update to npm@4\r\n* 2016-08-26   v9.0.0   CLI add global dependencies up to date message\r\n* 2016-06-30   v8.0.0   Update dependencies\r\n* 2015-11-09   v7.0.0   Update to npm@3\r\n* 2015-10-19   v6.4.0   CLI Add `-i, --ignore` option to ignore dependencies\r\n* 2015-10-19   v6.3.0   Ignore dependencies from `package.json` config\r\n* 2015-08-08   v6.2.0   CLI Add `-p, --package` to specify package.json path\r\n* 2014-12-19   v6.0.0   Warn about unregistered or git dependencies by default\r\n* 2014-09-22   v5.0.0   Update to semver@4.0.0\r\n* 2014-09-22   v4.1.0   Add versions option to return all dependency versions\r\n* 2014-09-21   v4.0.0   Update to npm@2.0.2, add rangeVersions option\r\n* 2014-06-02   v3.3.0   CLI Add `--warn404` option to print errors but not abort\r\n* 2014-03-11   v3.1.0   CLI Add `-r, --registry` option to use alternate npm registry\r\n* 2014-03-06   v3.0.0   Errors occurring whilst retrieving dependency status doesn&#x27;t halt processing of other dependencies. An error object will be returned as first arg to callback, but status info for remaining dependencies will still be available (as second arg). CLI now uses loose semver version parsing. Also update npm dependency so `david update` uses \&#x22;^\&#x22; as per https://github.com/npm/npm/issues/4587\r\n* 2013-10-27   v2.4.0   Removes `semverext.js`. The `gtr` function is now available in `semver`\r\n* 2013-10-08   v2.3.0   Support update specific modules from CLI via `david update [module]`\r\n* 2013-10-01   v2.2.0   Support for `optionalDependencies` and `peerDependencies`\r\n* 2013-09-16   v2.1.0   Fixed issues with latest/stable version detection\r\n* 2013-08-25   v2.0.0   Simplification refactor to remove caching and useless events. Code style changes, performance improvements.\r\n* 2013-08-04   v1.9.0   CLI added `--unstable` flag to view/update to latest _unstable_ dependency versions\r\n* 2013-07-30   v1.8.0   CLI added `david update` to update dependencies to latest _stable_ versions and save to your project `package.json`\r\n* 2013-06-27   v1.7.0   Updated to use semver 2 module. Simplified code that determines if a version is greater than a range\r\n* 2013-03-28   v1.6.0   Use `setImmediate` instead of `process.nextTick`. David now requires Node.js 0.10.x\r\n* 2013-03-27   v1.5.0   CLI added `--global` flag to find outdated global dependencies\r\n* 2013-03-15   v1.4.0   Allow set the maximum number of dependencies that can be stored in the cache\r\n* 2013-03-14   v1.3.0   Added CLI support\r\n* 2013-03-05   v1.2.0   David can now get dependency information for `devDependencies`\r\n* 2013-02-07   v1.1.0   Adds `onlyStable` param to `getUpdatedDependencies` to filter by dependencies that are updated and stable\r\n* 2013-02-06   v1.0.0   Return latest stable version as well as latest version (including patch and build versions). API return values changed. Events changed.\r\n\r\n---\r\n\r\n[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)\r\n&#x22;,
+&#x22;readmeFilename&#x22;: &#x22;README.md&#x22;,
+&#x22;repository&#x22;: {
+  &#x22;type&#x22;: &#x22;git&#x22;,
+  &#x22;url&#x22;: &#x22;git://github.com/alanshaw/david.git&#x22;
+},
+&#x22;scripts&#x22;: {
+  &#x22;coveralls&#x22;: &#x22;cat ./coverage/lcov.info | coveralls&#x22;,
 ...</pre></li>
     </ul>
 
@@ -549,20 +512,22 @@ listDependencies(deps);
   cbs.forEach(cb)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  if (batch.exists(name)) {
-    return batch.push(name, cb)
-  }
+    return function (cb) {
+      if (opts.ignore.indexOf(depName) &#x3e; -1) {
+return cb()
+      }
 
-  batch.push(name, cb)
+      var err
 
-  npm.load(opts.npm || {}, function (err) {
-    if (err) return batch.<span class="apidocCodeKeywordSpan">call</span>(name, function (cb) { cb(err) })
+      if (Object.prototype.toString.<span class="apidocCodeKeywordSpan">call</span>(deps[depName]) !== &#x27;[object String]&#x27
+;) {
+err = new Error(&#x27;Non-string dependency: &#x27; + deps[depName])
+err.code = &#x27;EDEPTYPE&#x27;
 
-    npm.commands.view([name, &#x27;versions&#x27;, &#x27;time&#x27;], true, function (err, data) {
-if (err) return batch.call(name, function (cb) { cb(err) })
-
-var currentVersion = Object.keys(data)[0]
-var versions = null
+if (!opts.error.EDEPTYPE) {
+  pkgs[depName] = {required: deps[depName], warn: err}
+} else {
+  error = err
 ...</pre></li>
     </ul>
 
@@ -611,257 +576,22 @@ npm.load(opts.npm || {}, function (err) {
   this._batch[key].push(cb)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-/**
-* Create or add a callback function to the end of a batch for a given key.
-* @param key
-* @param cb
-*/
-Batch.prototype.push = function (key, cb) {
- this._batch[key] = this._batch[key] || []
- this._batch[key].<span class="apidocCodeKeywordSpan">push</span>(cb)
+}
+
+argv.update = argv._.indexOf(&#x27;update&#x27;) &#x3e; -1 || argv._.indexOf(&#x27;u&#x27;) &#x3e; -1
+
+function getNonWarnDepNames (deps) {
+ return Object.keys(deps).reduce(function (names, name) {
+   if (!deps[name].warn) {
+     names.<span class="apidocCodeKeywordSpan">push</span>(name)
+   }
+   return names
+ }, [])
 }
 
 /**
-* Determine if there is a batch for the given key.
-* @param {String} key
-* @returns {boolean}
-*/
+* Like printDeps, walk the list, but only print dependencies
 ...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.david.getDependencies" id="apidoc.module.david.getDependencies">module david.getDependencies</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.david.getDependencies.getDependencies" id="apidoc.element.david.getDependencies.getDependencies">
-        function <span class="apidocSignatureSpan">david.</span>getDependencies
-        <span class="apidocSignatureSpan">(manifest, opts, cb)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function getDependencies(manifest, opts, cb) {
-  manifest = manifest || {}
-
-  // Allow callback to be passed as second parameter
-  if (!cb) {
-    cb = opts
-    opts = {}
-  } else {
-    opts = opts || {}
-  }
-
-  opts.error = opts.error || {}
-  opts.ignore = opts.ignore || []
-
-  if (manifest.david &#x26;&#x26; manifest.david.ignore) {
-    opts.ignore = opts.ignore.concat(manifest.david.ignore)
-  }
-
-  var pkgs = {}
-  var deps = normaliseDeps(manifest[depType(opts)] || {})
-  var depNames = Object.keys(deps)
-  var error // Return any error that occurred but don&#x27;t stop processing
-
-  if (!depNames.length) {
-    return setImmediate(function () { cb(null, pkgs) })
-  }
-
-  var tasks = depNames.map(function (depName) {
-    return function (cb) {
-      if (opts.ignore.indexOf(depName) &#x3e; -1) {
-        return cb()
-      }
-
-      var err
-
-      if (Object.prototype.toString.call(deps[depName]) !== &#x27;[object String]&#x27;) {
-        err = new Error(&#x27;Non-string dependency: &#x27; + deps[depName])
-        err.code = &#x27;EDEPTYPE&#x27;
-
-        if (!opts.error.EDEPTYPE) {
-          pkgs[depName] = {required: deps[depName], warn: err}
-        } else {
-          error = err
-        }
-
-        return cb()
-      }
-
-      if (Version.isScm(deps[depName])) {
-        err = new Error(&#x27;SCM dependency: &#x27; + deps[depName])
-        err.code = &#x27;ESCM&#x27;
-
-        if (!opts.error.ESCM) {
-          pkgs[depName] = {required: deps[depName], warn: err}
-        } else {
-          error = err
-        }
-        return cb()
-      }
-
-      Npm.getVersionsInfo(depName, opts, function (err, versionsInfo) {
-        if (err) {
-          if (!opts.error.E404 &#x26;&#x26; err.code === &#x27;E404&#x27;) {
-            if (err === &#x27;404 Not Found&#x27;) {
-              err = new Error(&#x27;404 Not Found: &#x27; + depName)
-              err.pkgid = depName
-              err.statusCode = 404
-              err.code = &#x27;E404&#x27;
-            }
-
-            pkgs[depName] = {required: deps[depName], warn: err}
-          } else {
-            error = err
-          }
-          return cb()
-        }
-
-        try {
-          var latestVersionInfo = Version.getLatest(versionsInfo.current, versionsInfo.versions, opts)
-
-          pkgs[depName] = {
-            required: deps[depName],
-            stable: latestVersionInfo.stable,
-            latest: latestVersionInfo.latest
-          }
-
-          if (opts.versions) {
-            pkgs[depName].versions = versionsInfo.versions
-          }
-
-          if (opts.rangeVersions) {
-            pkgs[depName].rangeVersions = Version.getVersionsInRange(deps[depName], versionsInfo.versions, opts.loose)
-          }
-        } catch (err) {
-          error = err
-        }
-
-        cb()
-      })
-    }
-  })
-
-  parallel(tasks, function () { cb(error, pkgs) })
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-},
-devDependencies: {
-  &#x27;yyy&#x27;: &#x27;~0.0.0&#x27;,
-  &#x27;zzz&#x27;: &#x27;~0.0.0&#x27;
-}
-};
-
-david.<span class="apidocCodeKeywordSpan">getDependencies</span>(manifest, function (er, deps) {
-console.log(&#x27;latest dependencies information for&#x27;, manifest.name);
-listDependencies(deps);
-});
-
-david.getDependencies(manifest, { dev: true }, function (er, deps) {
-console.log(&#x27;latest devDependencies information for&#x27;, manifest.name);
-listDependencies(deps);
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.david.getUpdatedDependencies" id="apidoc.module.david.getUpdatedDependencies">module david.getUpdatedDependencies</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.david.getUpdatedDependencies.getUpdatedDependencies" id="apidoc.element.david.getUpdatedDependencies.getUpdatedDependencies">
-        function <span class="apidocSignatureSpan">david.</span>getUpdatedDependencies
-        <span class="apidocSignatureSpan">(manifest, opts, cb)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">getUpdatedDependencies = function (manifest, opts, cb) {
-  if (!cb) {
-    cb = opts
-    opts = {}
-  } else {
-    opts = opts || {}
-  }
-  opts.error = opts.error || {}
-
-  getDependencies(manifest, opts, function (err, pkgs) {
-    if (err) return cb(err)
-
-    // Filter out the non-updated dependencies
-    Object.keys(pkgs).forEach(function (depName) {
-      if (pkgs[depName].warn) return
-
-      if (!isUpdated(pkgs[depName], opts)) {
-        delete pkgs[depName]
-      }
-    })
-
-    cb(err, pkgs)
-  })
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-});
-
-david.getDependencies(manifest, { dev: true }, function (er, deps) {
-console.log(&#x27;latest devDependencies information for&#x27;, manifest.name);
-listDependencies(deps);
-});
-
-david.<span class="apidocCodeKeywordSpan">getUpdatedDependencies</span>(manifest, function (er, deps) {
-console.log(&#x27;dependencies with newer versions for&#x27;, manifest.name);
-listDependencies(deps);
-});
-
-david.getUpdatedDependencies(manifest, { dev: true }, function (er, deps) {
-console.log(&#x27;devDependencies with newer versions for&#x27;, manifest.name);
-listDependencies(deps);
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.david.isUpdated" id="apidoc.module.david.isUpdated">module david.isUpdated</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.david.isUpdated.isUpdated" id="apidoc.element.david.isUpdated.isUpdated">
-        function <span class="apidocSignatureSpan">david.</span>isUpdated
-        <span class="apidocSignatureSpan">(dep, opts)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function isUpdated(dep, opts) {
-  opts = opts || {}
-
-  var required = dep.required || &#x27;*&#x27;
-
-  // TODO: Handle tags correctly
-  if (required !== &#x27;latest&#x27; &#x26;&#x26; required !== &#x27;*&#x27;) {
-    var range = semver.validRange(required, opts.loose) || &#x27;&#x27;
-    var version = opts.stable ? dep.stable : dep.latest
-
-    if (version) {
-      if (!range) {
-        return true
-      } else if (!semver.satisfies(version, range, opts.loose)) {
-        if (opts.stable &#x26;&#x26; semver.gtr(version, range, opts.loose)) {
-          return true
-        } else if (!opts.stable) {
-          return true
-        }
-      }
-    }
-  }
-  return false
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
@@ -918,7 +648,23 @@ listDependencies(deps);
     })
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    pkgs[depName] = {required: deps[depName], warn: err}
+  } else {
+    error = err
+  }
+  return cb()
+}
+
+Npm.<span class="apidocCodeKeywordSpan">getVersionsInfo</span>(depName, opts, function (err, versionsInfo) {
+  if (err) {
+    if (!opts.error.E404 &#x26;&#x26; err.code === &#x27;E404&#x27;) {
+      if (err === &#x27;404 Not Found&#x27;) {
+        err = new Error(&#x27;404 Not Found: &#x27; + depName)
+        err.pkgid = depName
+        err.statusCode = 404
+        err.code = &#x27;E404&#x27;
+...</pre></li>
     </ul>
 
 
@@ -957,7 +703,23 @@ listDependencies(deps);
 
   return { latest: latest, stable: stable }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else {
+  error = err
+}
+return cb()
+        }
+
+        try {
+var latestVersionInfo = Version.<span class="apidocCodeKeywordSpan">getLatest</span>(versionsInfo.current, versionsInfo.versions
+, opts)
+
+pkgs[depName] = {
+  required: deps[depName],
+  stable: latestVersionInfo.stable,
+  latest: latestVersionInfo.latest
+}
+...</pre></li>
     </ul>
 
 
@@ -996,7 +758,24 @@ listDependencies(deps);
     return semver.satisfies(v, range, loose)
   })
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+
+    if (opts.versions) {
+      pkgs[depName].versions = versionsInfo.versions
+    }
+
+    if (opts.rangeVersions) {
+      pkgs[depName].rangeVersions = Version.<span class="apidocCodeKeywordSpan">getVersionsInRange</span>(deps[depName], versionsInfo
+.versions, opts.loose)
+    }
+  } catch (err) {
+    error = err
+  }
+
+  cb()
+})
+...</pre></li>
     </ul>
 
 
@@ -1015,7 +794,23 @@ listDependencies(deps);
   })
   return !!blacklisted.length
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else {
+  error = err
+}
+
+return cb()
+      }
+
+      if (Version.<span class="apidocCodeKeywordSpan">isScm</span>(deps[depName])) {
+err = new Error(&#x27;SCM dependency: &#x27; + deps[depName])
+err.code = &#x27;ESCM&#x27;
+
+if (!opts.error.ESCM) {
+  pkgs[depName] = {required: deps[depName], warn: err}
+} else {
+  error = err
+...</pre></li>
     </ul>
 
 
